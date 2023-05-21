@@ -25,11 +25,15 @@ export const useCart = () => {
     setCart((prev) => prev.filter((i) => i.id !== item.id));
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   useEffect(() => {
     console.log('cart', cart);
   }, [cart]);
 
-  return { cart, addToCart, removeFromCart };
+  return { cart, addToCart, removeFromCart, clearCart };
 };
 
 export default useCart;

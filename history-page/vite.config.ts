@@ -7,20 +7,19 @@ export default defineConfig({
   plugins: [
     react(),
     federation({
-      name: 'main-app',
+      name: 'cart-app',
       filename: 'remoteEntry.js',
       exposes: {
-        './CartStore': './src/store/cart.ts',
-        './HistoryStore': './src/store/history.ts',
+        './History': './src/History.jsx',
       },
       remotes: {
-        cartApp: 'http://localhost:4001/assets/remoteEntry.js',
-        historyApp: 'http://localhost:5001/assets/remoteEntry.js',
+        mainApp: 'http://localhost:3001/assets/remoteEntry.js',
       },
       shared: ['react', 'react-dom', 'jotai', 'react-simple-toasts'],
     }),
   ],
   build: {
     target: 'esnext',
+    cssCodeSplit: false,
   },
 });

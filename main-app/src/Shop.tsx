@@ -11,7 +11,10 @@ export const Shop = () => {
       <div className="flex flex-wrap gap-10 justify-center items-center">
         {items.map((item) => {
           return (
-            <div className="flex flex-col items-center justify-center gap-2">
+            <div
+              key={item.id}
+              className="flex flex-col items-center justify-center gap-2"
+            >
               <div className="font-semibold max-w-[400px]">{item.name}</div>
               <div className="w-60 flex items-center justify-center">
                 <img src={item.url} alt={`Image of ${item.name}`} />

@@ -22,9 +22,8 @@ const CartItem = ({ name, imgUrl, price, onRemove }) => {
     </div>
   );
 };
-const Cart = () => {
+const Cart = ({ onComplete }) => {
   const { cart, removeFromCart } = useCart();
-
   const totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
 
   return (
@@ -48,7 +47,17 @@ const Cart = () => {
         <div className="flex flex-col">
           <h1 className="font-semibold text-xl">Total</h1>
           <span>R$ {totalPrice.toFixed(2)}</span>
-          <button className="bg-emerald-400 px-4 py-2 rounded-md">
+          <button
+            className="bg-emerald-400 px-4 py-2 rounded-md"
+            onClick={() =>
+              onComplete({
+                totalPrice,
+                items: cart,
+                date: new Date(),
+              })
+            }
+            disabled={cart.length === 0}
+          >
             Complete Purchase
           </button>
         </div>

@@ -1,16 +1,35 @@
 //@ts-nocheck
-import { Link, Outlet, Route, Routes } from 'react-router-dom';
+import { Link, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
 import useCart from './store/cart';
 import { Shop } from './Shop';
 import Cart from 'cartApp/Cart';
+import History from 'historyApp/History';
+import useHistoryStore from './store/history';
+import toast from 'react-simple-toasts';
 
 function App() {
+  const { addToHistory } = useHistoryStore();
+  const { clearCart } = useCart();
+  const navigate = useNavigate();
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Shop />} />
-        <Route path="/my-cart" element={<Cart />} />
-        <Route path="/history" element={<div>My History</div>} />
+        <Route
+          path="/my-cart"
+          element={
+            <Cart
+              onComplete={(purchase) => {
+                toast('Checkout complete!');
+                addToHistory(purchase);
+                clearCart();
+                navigate('/history');
+              }}
+            />
+          }
+        />
+        <Route path="/history" element={<History />} />
       </Route>
     </Routes>
   );
