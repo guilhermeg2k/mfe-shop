@@ -13,6 +13,9 @@ dependencies:
   react-router-dom:
     specifier: ^6.8.0
     version: 6.8.0(react-dom@18.2.0)(react@18.2.0)
+  react-simple-toasts:
+    specifier: ^3.6.2
+    version: 3.6.2(react-dom@18.2.0)(react@18.2.0)
 
 devDependencies:
   '@originjs/vite-plugin-federation':
@@ -1932,6 +1935,17 @@ packages:
     dependencies:
       '@remix-run/router': 1.3.1
       react: 18.2.0
+    dev: false
+
+  /react-simple-toasts@3.6.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-vro3psfOBHg5pdGx9GzqLxFBtCEUmDcK94zQL62AuO373L/kdLUtEyRDrqnXdnjI7Rd81E1/IuI5lGx21PIAIw==}
+    engines: {node: '>=16.17.0'}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react@18.2.0:

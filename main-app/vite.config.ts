@@ -15,7 +15,7 @@ export default defineConfig({
       remotes: {
         cartApp: 'http://localhost:4001/assets/remoteEntry.js',
       },
-      shared: ['react', 'react-dom', 'jotai'],
+      shared: ['react', 'react-dom', 'jotai', 'react-simple-toasts'],
     }),
   ],
   build: {

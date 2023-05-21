@@ -1,4 +1,6 @@
-import { atom, useAtom } from 'jotai';
+import { useAtom } from 'jotai';
+import { useEffect } from 'react';
+import { atomWithStorage } from 'jotai/utils';
 
 export type Item = {
   id: number;
@@ -7,7 +9,7 @@ export type Item = {
   url: string;
 };
 
-const cartAtom = atom(Array<Item>());
+const cartAtom = atomWithStorage('cart', Array<Item>());
 
 export const useCart = () => {
   const [cart, setCart] = useAtom(cartAtom);
@@ -22,6 +24,10 @@ export const useCart = () => {
   const removeFromCart = (item: Item) => {
     setCart((prev) => prev.filter((i) => i.id !== item.id));
   };
+
+  useEffect(() => {
+    console.log('cart', cart);
+  }, [cart]);
 
   return { cart, addToCart, removeFromCart };
 };

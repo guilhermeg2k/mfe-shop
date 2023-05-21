@@ -23,7 +23,7 @@ const Layout = () => {
     <main className="px-4">
       <header className="flex py-10 gap-4 items-center">
         <span className="text-4xl uppercase font-bold">
-          My Incredible MFE Shop
+          <Link to="/"> My Incredible MFE Shop </Link>
         </span>
         <ul className="uppercase flex gap-2 font-semibold">
           <li>

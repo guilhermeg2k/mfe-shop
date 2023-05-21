@@ -10,12 +10,12 @@ export default defineConfig({
       name: 'cart-app',
       filename: 'remoteEntry.js',
       exposes: {
-        './Cart': './src/Cart.tsx',
+        './Cart': './src/Cart.jsx',
       },
       remotes: {
         mainApp: 'http://localhost:3001/assets/remoteEntry.js',
       },
-      shared: ['react', 'react-dom', 'jotai'],
+      shared: ['react', 'react-dom', 'jotai', 'react-simple-toasts'],
     }),
   ],
   build: {
