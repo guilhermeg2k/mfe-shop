@@ -1,14 +1,11 @@
 //@ts-nocheck
 import { Link, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
-import useCart from './store/cart';
-import { Shop } from './Shop';
-import useHistoryStore from './store/history';
 import toast from 'react-simple-toasts';
-import React, { Suspense } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
-
-const Cart = React.lazy(() => import('cartApp/Cart'));
-const History = React.lazy(() => import('historyApp/History'));
+import { Cart } from './Cart';
+import { History } from './History';
+import { Shop } from './Shop';
+import useCart from './store/cart';
+import useHistoryStore from './store/history';
 
 function App() {
   const { addToHistory } = useHistoryStore();
@@ -16,40 +13,25 @@ function App() {
   const navigate = useNavigate();
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Shop />} />
-          <Route
-            path="/my-cart"
-            element={
-              <ErrorBoundary
-                fallback={<div>Failed to load dynamic module</div>}
-              >
-                <Cart
-                  onComplete={(purchase) => {
-                    toast('Checkout complete!');
-                    addToHistory(purchase);
-                    clearCart();
-                    navigate('/history');
-                  }}
-                />
-              </ErrorBoundary>
-            }
-          />
-          <Route
-            path="/history"
-            element={
-              <ErrorBoundary
-                fallback={<div>Failed to load dynamic module</div>}
-              >
-                <History />
-              </ErrorBoundary>
-            }
-          />
-        </Route>
-      </Routes>
-    </Suspense>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Shop />} />
+        <Route
+          path="/my-cart"
+          element={
+            <Cart
+              onComplete={(purchase) => {
+                toast('Checkout complete!');
+                addToHistory(purchase);
+                clearCart();
+                navigate('/history');
+              }}
+            />
+          }
+        />
+        <Route path="/history" element={<History />} />
+      </Route>
+    </Routes>
   );
 }
 
