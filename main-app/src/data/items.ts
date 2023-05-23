@@ -54,7 +54,7 @@ export const items = [
     url: 'https://images.kabum.com.br/produtos/fotos/94582/94582_1516796661_index_gg.jpg',
   },
   {
-    id: 6,
+    id: 10,
     name: 'Notebook Gamer Lenovo Gaming 3i Intel Core i5-11300H, GeForce GTX 1650, 8GB RAM, SSD 512GB, 15.6 Full HD, Windows 11, Preto',
     price: 3799.99,
     url: 'https://images.kabum.com.br/produtos/fotos/373931/notebook-gamer-lenovo-gaming-3-intel-core-i5-11300h-geforce-gtx1650-8gb-ram-ssd-512gb-15-6-full-hd-windows-11-preto-82mg0009br-_1662137578_gg.jpg',
